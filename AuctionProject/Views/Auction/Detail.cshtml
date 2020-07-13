@@ -1,0 +1,46 @@
+﻿@model Auction
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Auctions</title>
+</head>
+
+<body>
+    <h3>Auction ID: @Model.AuctionId</h3>
+    <h3>Product ID: @Model.ProductId</h3>
+    <h3>Seller ID: @Model.SellerId</h3>
+    <hr />
+    <h1>Bids</h1>
+    @foreach (AuctionBid ab in Model.AuctionBid)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Auction Bid ID</th>
+                    <th scope="col">User ID</th>
+                    <th scope="col">Bid Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">@ab.AuctionBidId</th>
+                    <td>@ab.UserId</td>
+                    <td>@ab.BidAmount.ToString("C", System.Globalization.CultureInfo.CurrentCulture)</td> 
+                    <td> <form action = "/auctionbid/UpdateBid/@ab.AuctionBidId" class="d-inline">
+                        <button class="btn btn-primary">Update</button>
+                        </form></td>
+                    <td><form action = "/auctionbid/DeleteBid/@ab.AuctionBidId" class="d-inline">
+                        <button class="btn btn-danger">Delete</button>
+                        </form></td>
+                </tr>
+            </tbody>
+        </table>
+    }
+    <form action ="/auctionbid/CreateBid" class="d-inline">
+        <button class="btn btn-success">Add</button>
+    </form>
+</body>
+</html>

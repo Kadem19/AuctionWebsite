@@ -1,0 +1,31 @@
+﻿@model Auction
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Auctions</title>
+</head>
+
+<body>
+    <form asp-action="Create" method="post">
+        <table>
+            <tr>
+                <th> Seller Id: </th>
+                <td> <input asp-for="SellerId" type="number"/> </td>
+            </tr>
+            <tr>
+                <th> Product Id: </th>
+                <td> <input asp-for="ProductId" type="number"/> </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td> <input type="submit" value="Add Auction" /> </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

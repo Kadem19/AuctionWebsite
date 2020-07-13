@@ -1,0 +1,22 @@
+﻿@model AuctionBid
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title> AuctionBid </title>
+</head>
+
+<body>
+    <form method="post">
+        <input type="hidden" asp-for="AuctionBidId" />
+
+        <h1> Are You Sure? </h1>
+        <button class="btn btn-danger" asp-controller="AuctionBid" asp-action="DeleteBid"> Delete </button>
+        <button class="btn btn-outline-success" asp-controller="Auction" asp-action="Index" formmethod="get">
+            Cancel
+        </button>
+    </form>
+</body>
+</html>
