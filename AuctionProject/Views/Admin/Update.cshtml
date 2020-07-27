@@ -1,0 +1,42 @@
+﻿@model Auction
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Auction</title>
+</head>
+<body>
+    <form asp-controller="Auction" asp-action="Update" method="post">
+        <table>
+            <tr>
+                <th> Seller Id: </th>
+                <td> <input asp-for="SellerId" type="number" /> </td>
+            </tr>
+            <tr>
+                <th> Product Id: </th>
+                <td> <input asp-for="ProductId" type="number" /> </td>
+            </tr>
+            <tr>
+                <th> Product Name: </th>
+                <td> <input asp-for="ProductName" /></td>
+            </tr>
+            <tr>
+                <th> Console: </th>
+                <td> <input asp-for="ProductConsole" /></td>
+            </tr>
+            <tr>
+            <tr>
+                <th></th>
+                <td>
+                    <button class="btn btn-primary" asp-action="Update"> Update </button>
+                    <button class="btn btn-outline-danger" asp-action="Index" formmethod="get">
+                        Cancel
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

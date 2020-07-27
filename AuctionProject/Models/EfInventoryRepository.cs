@@ -20,12 +20,12 @@ namespace AuctionProject.Models
 
         //   M e t h o d s
 
-        public Inventory GetInventory(int inventoryId)
-        {
-            return context.Inventories
-                //.Include("AuctionBid")
-                .FirstOrDefault(i => i.ProductId == inventoryId);
-        }
+        //public Inventory GetInventory(int inventoryId)
+        //{
+        //    return context.Inventories
+        //        .Include("AuctionBid")
+        //        .FirstOrDefault(i => i.ProductId == inventoryId);
+        //}
         public Inventory AddItem(Inventory product)
         {
             context.Inventories.Add(product);

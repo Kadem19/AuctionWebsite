@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace AuctionProject.Models
 {
@@ -12,18 +13,24 @@ namespace AuctionProject.Models
         //   F i e l d s  &  P r o p e r t i e s
 
         private AppDbContext context;
+        private SignInManager<IdentityUser> signInManager;
 
         //   C o n s t r u c t o r s
 
-        public EfAuctionRepository(AppDbContext context)
+        public EfAuctionRepository(AppDbContext context,
+         SignInManager<IdentityUser> signInManager)
         {
             this.context = context;
+            this.signInManager = signInManager;
         }
 
         //   M e t h o d s
 
         public IQueryable<Auction> GetAllAuctions()
         {
+            var user = signInManager.Context.User;
+            bool isLoggedIn = user.Identity.IsAuthenticated;
+            string userName = user.Identity.Name;
             return context.Auctions;
         }
 
@@ -54,6 +61,8 @@ namespace AuctionProject.Models
             {
                 auctionToUpdate.SellerId = auction.SellerId;
                 auctionToUpdate.ProductId = auction.ProductId;
+                auctionToUpdate.ProductName = auction.ProductName;
+                auctionToUpdate.ProductConsole = auction.ProductConsole;
                 context.SaveChanges();
             }
             return auctionToUpdate;

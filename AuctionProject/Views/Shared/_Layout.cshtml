@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AuctionProject</title>
+    <title>@ViewData["Title"] - GAMEAUX</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -11,7 +11,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AuctionProject</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GameAux</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,18 +25,17 @@
                         </li>
                         <li class="nav-item">
                             <form action="/auction/create" class="d-inline">
-                                <button class="btn btn-outline-success">Add</button>
+                                <button class="btn btn-outline-primary">Categories</button>
+                            </form>
+                            </li>
+                        <li class="nav-item">
+                            <form action="/admin/index" class="d-inline">
+                                <button class="btn btn-outline-success float-right">Admin</button>
                             </form>
                         </li>
-                        @*<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auction" asp-action="Delete">Delete</a>
+                         <li>
+                             <partial name="_LoginPartial" />
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auction" asp-action="Detail">Detail</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auction" asp-action="Update">Update</a>
-                        </li>*@
                     </ul>
                 </div>
             </div>

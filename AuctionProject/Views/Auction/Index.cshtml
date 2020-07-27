@@ -1,4 +1,4 @@
-﻿@model IQueryable<Auction>
+﻿@model IQueryable<Auction> 
 @{
     Layout = "_Layout";
 }
@@ -11,30 +11,26 @@
     <title>Index</title>
 </head>
 <body>
-    <h1>Welcome to the Auction Site!</h1>
+    <h1>Welcome to GameAux!</h1>
+    <hr />
+    <h2>Current Auctions</h2>
     @foreach (Auction a in Model)
     {
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Auction ID</th>
-                    <th scope="col">Seller ID</th>
-                    <th scope="col">Product ID</th>
+                    <th scope="col"></th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Console</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">@a.AuctionId</th>
-                    <td>@a.SellerId</td>
-                    <td>@a.ProductId</td>
-                    <td><form action="/auction/update/@a.AuctionId" class="d-inline">
-                        <button class="btn btn-primary">Update</button>
-                        </form></td>
-                    <td><form action="/auction/delete/@a.AuctionId" class="d-inline">
-                        <button class="btn btn-danger">Delete</button>
-                        </form></td>
-                    <td><form action="/auction/detail/@a.AuctionId" class="d-inline">
-                        <button class="btn btn-secondary">Details</button>
+                    <td scope="row"> <img src="@a.ImgUrl" height="100" width="75"/></td>
+                    <td scope="row" width="300">@a.ProductName</td>
+                    <td scope="row" width="300">@a.ProductConsole</td>   
+                    <td><form action="/auctionbid/CreateBid" class="d-inline">
+                        <button class="btn btn-success">Place Bid</button>
                         </form></td>
                 </tr>
             </tbody>

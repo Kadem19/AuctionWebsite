@@ -21,16 +21,16 @@ namespace AuctionProject.Controllers
             this.repository = repository;
         }
 
-        //   M e t h o d s
+       // M e t h o d s
 
-        public IActionResult Index(int productPage = 1)
-        {
-            IQueryable<Inventory> someProducts =
-                repository.GetInventory()
-                .OrderyBy(i => i.ProductId)
-                .Skip(productPage - 1) * pageSize)
-                .Take(pageSize);
-            return View(someProducts);
-        }
+        //public IActionResult Index(int productPage = 1)
+        //{
+        //    IQueryable<Inventory> someProducts =
+        //        repository.GetInventory()
+        //        .OrderyBy(i => i.ProductId)
+        //        .Skip(productPage - 1) * pageSize)
+        //        .Take(pageSize);
+        //    return View(someProducts);
+        //}
     }
 }

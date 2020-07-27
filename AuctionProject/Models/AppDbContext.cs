@@ -3,15 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace AuctionProject.Models
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         //   F i e l d s  &  P r o p e r t i e s
         
         public DbSet<AuctionBid> AuctionBids { get; set; }
-        public DbSet<User>       Users       { get; set; }
+        public DbSet<IdentityUser>       Users       { get; set; }
         public DbSet<Auction>    Auctions    { get; set; }
         public DbSet<Inventory>  Inventories { get; set; }
         //public DbSet<Employees> Employees { get; set; }

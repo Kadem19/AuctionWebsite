@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AuctionProject.Models
 {
@@ -13,7 +14,13 @@ namespace AuctionProject.Models
         public int SellerId { get; set; }
 
         public int ProductId { get; set; }
+        
+        public string ProductName { get; set; }
+        public string ProductConsole { get; set; }
+        
+        public string ImgUrl { get; set; }
         public IEnumerable<AuctionBid> AuctionBid { get; set; }
+
         //   C o n s t r u c t o r s
 
         //   M e t h o d s 

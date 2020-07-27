@@ -13,7 +13,7 @@ namespace AuctionProject.Models
 
         //   R e a d
         
-        Inventory GetInventory(Inventory product);
+       // Inventory GetInventory(Inventory product);
 
         //   U p d a t e
 
@@ -21,6 +21,6 @@ namespace AuctionProject.Models
 
         //   D e l e t e
 
-        Inventory DeleteItem(Inventory product);
+        // Inventory DeleteItem(Inventory product);
     }
 }
