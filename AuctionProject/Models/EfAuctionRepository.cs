@@ -31,7 +31,8 @@ namespace AuctionProject.Models
             var user = signInManager.Context.User;
             bool isLoggedIn = user.Identity.IsAuthenticated;
             string userName = user.Identity.Name;
-            return context.Auctions;
+            var auctions = context.Auctions.Include(a => a.AuctionBid);
+            return auctions;
         }
 
         public IQueryable<Auction> GetAuctionsByKeyword(string keyword)
@@ -63,6 +64,8 @@ namespace AuctionProject.Models
                 auctionToUpdate.ProductId = auction.ProductId;
                 auctionToUpdate.ProductName = auction.ProductName;
                 auctionToUpdate.ProductConsole = auction.ProductConsole;
+                auctionToUpdate.BuyNowPrice = auction.BuyNowPrice;
+                auctionToUpdate.Category = auction.Category;
                 context.SaveChanges();
             }
             return auctionToUpdate;
@@ -86,6 +89,14 @@ namespace AuctionProject.Models
             context.Auctions.Remove(auctionToDelete);
             context.SaveChanges();
             return true;
+        }
+
+        public IQueryable<string> GetAllCategories()
+        {
+            return context.Auctions
+                          .Select(a => a.Category)
+                          .Distinct()
+                          .OrderBy(c => c);
         }
 
         //public IQueryable<Employees> GetAllEmployees()

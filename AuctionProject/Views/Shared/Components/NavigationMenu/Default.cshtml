@@ -1,0 +1,18 @@
+﻿@model IQueryable<string>
+
+<a class="btn btn-block btn-outline-primary"
+   asp-controller="Auction"
+   asp-action="Index"
+   asp-route-category="">
+    All
+</a>
+
+@foreach (string category in Model)
+{
+    <a class="btn btn-block btn-outline-primary"
+       asp-controller="Auction"
+       asp-action="Index"
+       asp-route-category="@category">
+        @category
+    </a>
+}

@@ -7,7 +7,7 @@
     <title>Auction</title>
 </head>
 <body>
-    <form asp-controller="Auction" asp-action="Update" method="post">
+    <form asp-action="Update" method="post">
         <table>
             <tr>
                 <th> Seller Id: </th>
@@ -26,6 +26,18 @@
                 <td> <input asp-for="ProductConsole" /></td>
             </tr>
             <tr>
+            <tr>
+                <th> IMG Url: </th>
+                <td> <input asp-for="ImgUrl" /></td>
+            </tr>
+            <tr>
+                <th> Buy Now Price: </th>
+                <td> <input asp-for="BuyNowPrice" /></td>
+            </tr>
+            <tr>
+                <th> Category: </th>
+                <td> <input asp-for="Category" /></td>
+            </tr>
             <tr>
                 <th></th>
                 <td>

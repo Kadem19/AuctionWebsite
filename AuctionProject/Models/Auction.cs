@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace AuctionProject.Models
 {
@@ -19,8 +20,15 @@ namespace AuctionProject.Models
         public string ProductConsole { get; set; }
         
         public string ImgUrl { get; set; }
-        public IEnumerable<AuctionBid> AuctionBid { get; set; }
 
+        public double BuyNowPrice { get; set; }
+
+        public string Category { get; set; }
+        
+
+        [JsonIgnore]
+        [System.Runtime.Serialization.IgnoreDataMember]
+        public IEnumerable<AuctionBid> AuctionBid { get; set; }
         //   C o n s t r u c t o r s
 
         //   M e t h o d s 

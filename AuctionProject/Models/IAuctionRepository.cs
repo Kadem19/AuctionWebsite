@@ -13,6 +13,7 @@ namespace AuctionProject.Models
 
         //   R e a d
         IQueryable<Auction> GetAllAuctions();
+        IQueryable<string> GetAllCategories();
         Auction GetAuctionsId(int auctionsId);
         //IQueryable<Auctions> GetAuctionsByKeyword(string keyword);
 

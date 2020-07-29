@@ -10,28 +10,37 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AuctionProject.Controllers
 {
-    [Authorize]
+    //[Authorize(Roles = "ADMINISTRATOR")]
     public class AdminController : Controller
     {
         //   F i e l d s  &  P r o p e r t i e s
 
         private IAuctionRepository repository;
-        private int pageSize = 4;
+        private UserManager<IdentityUser> userManager;
+        private SignInManager<IdentityUser> signInManager;
 
         //   C o n s t r u c t o r s
 
-        public AdminController(IAuctionRepository repository)
+        public AdminController(IAuctionRepository repository, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             this.repository = repository;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
         }
-        public IActionResult Index(int productPage = 1)
+        public IActionResult Index()
         {
-            IQueryable<Auction> someAuctions =
-                repository.GetAllAuctions()
-                          .OrderBy(a => a.AuctionId)
-                          .Skip((productPage - 1) * pageSize)
-                          .Take(pageSize);
-            return View(someAuctions);
+            if (userManager.GetUserName(User) == "mccammon96@gmail.com")
+            {
+                IQueryable<Auction> someAuctions =
+                    repository.GetAllAuctions()
+                              .OrderBy(a => a.AuctionId);
+                return View(someAuctions);
+            }
+
+            else
+            {
+                return RedirectToAction("UnauthorizedUser", "Auction");
+            }
         }
 
         public IActionResult Detail(int id)
@@ -53,7 +62,7 @@ namespace AuctionProject.Controllers
             Auction auction = repository.GetAuctionsId(id);
             if (auction != null)
             {
-                return View();
+                return View(auction);
             }
             return RedirectToAction("Index");
         }

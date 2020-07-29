@@ -12,16 +12,9 @@ namespace AuctionProject.Models
     {
         //   F i e l d s  &  P r o p e r t i e s
         
-        public DbSet<AuctionBid> AuctionBids { get; set; }
+        public DbSet<AuctionBid>         AuctionBids { get; set; }
         public DbSet<IdentityUser>       Users       { get; set; }
-        public DbSet<Auction>    Auctions    { get; set; }
-        public DbSet<Inventory>  Inventories { get; set; }
-        //public DbSet<Employees> Employees { get; set; }
-        //public DbSet<Inventory> Inventory { get; set; }
-        //public DbSet<Sales> Sales { get; set; }
-        //public DbSet<Sellers> Sellers { get; set; }
-        //public DbSet<Users> Users { get; set; }
-
+        public DbSet<Auction>            Auctions    { get; set; }
         //   C o n s t r u c t o r s
 
         public AppDbContext(DbContextOptions<AppDbContext> options)
@@ -35,6 +28,35 @@ namespace AuctionProject.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Id = "04f1e43b-dbae-4d81-a6d2-17e145d2d2fd",
+                Name = "Administrator",
+                NormalizedName = "ADMINISTRATOR"
+            });
+
+            var hasher = new PasswordHasher<IdentityUser>();
+            modelBuilder.Entity<IdentityUser>().HasData(new IdentityUser
+            {
+                Id = "cd5a92a1-3616-4d5f-9e01-f425f7be23c5",
+                UserName = "mccammon96@gmail.com",
+                NormalizedUserName = "MCCAMMON96@GMAIL.COM",
+                Email = "mccammon96@gmail.com",
+                NormalizedEmail = "MCCAMMON96@GMAIL.COM",
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "Secret123$"),
+                SecurityStamp = string.Empty
+            });
+
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = "04f1e43b-dbae-4d81-a6d2-17e145d2d2fd",
+                UserId = "cd5a92a1-3616-4d5f-9e01-f425f7be23c5"
+            });
+
+
+
 
             modelBuilder.Entity<Auction>().HasData
                 (new Auction
@@ -88,98 +110,6 @@ namespace AuctionProject.Models
                   BidAmount = 23.50,
                   AuctionId = 2
               });
-
-            // modelBuilder.Entity<Employees>().HasData
-            //   (new Employees
-            //   {
-            //       empId = 1,
-            //       fname= "Kade",
-            //       lname = "McCammon"
-            //   });
-
-            // modelBuilder.Entity<Employees>().HasData
-            //  (new Employees
-            //  {
-            //      empId = 2,
-            //      fname = "John",
-            //      lname = "Smith"
-            //  });
-
-            // modelBuilder.Entity<Inventory>().HasData
-            //  (new Inventory
-            //  {
-            //      productid= 1,
-            //      productName = "Madden 21",
-            //      productQty = 1,
-            //      auctionid = 1
-            //  });
-
-            // modelBuilder.Entity<Inventory>().HasData
-            //  (new Inventory
-            //  {
-            //      productid = 2,
-            //      productName = "Red Dead Redemption 2",
-            //      productQty = 2,
-            //      auctionid = 2
-            //  });
-
-            // modelBuilder.Entity<Sales>().HasData
-            //  (new Sales
-            //  {
-            //      orderid = 1,
-            //      userid = 1,
-            //      productid = 1,
-            //      auctionid = 1,
-            //      productQty = 1
-            //  });
-
-            // modelBuilder.Entity<Sales>().HasData
-            // (new Sales
-            // {
-            //     orderid = 2,
-            //     userid = 2,
-            //     productid = 2,
-            //     auctionid = 2,
-            //     productQty = 1
-            // });
-
-            // modelBuilder.Entity<Sellers>().HasData
-            // (new Sellers
-            // {
-            //     sellerid = 1, 
-            //     userid = 1
-            // });
-
-            // modelBuilder.Entity<Sellers>().HasData
-            // (new Sellers
-            // {
-            //     sellerid = 2,
-            //     userid = 2
-            // });
-
-            // modelBuilder.Entity<Users>().HasData
-            // (new Users
-            // {
-            //    userid =1,
-            //    fName = "Jerry",
-            //    lName = "Jones",
-            //    email = "jerruhjones@aol.com",
-            //    password = "GoCowboys",
-            //    userAddress = "1 Cowboys Way Irvine, TX",
-            //    userPhone = "(555) 423-1345"
-            // });
-
-            // modelBuilder.Entity<Users>().HasData
-            //(new Users
-            //{
-            //    userid = 2,
-            //    fName = "Lebron",
-            //    lName = "James",
-            //    email = "kingjames@aol.com",
-            //    password = "LakeShow",
-            //    userAddress = "1 Hollywood Blvd Hollwood, CA",
-            //    userPhone = "(555) 421-1346"
-            //});
         }
     }
 }

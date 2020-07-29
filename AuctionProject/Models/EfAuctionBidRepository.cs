@@ -26,6 +26,13 @@ namespace AuctionProject.Models
                 //.Include("AuctionBid")
                 .FirstOrDefault(a => a.AuctionBidId == auctionbidId);
         }
+
+        public AuctionBid GetHighestBid(int auctionId)
+        {
+            return context.AuctionBids
+                .OrderByDescending(a => a.BidAmount)
+                .FirstOrDefault(a => a.AuctionId == auctionId);
+        }
         public AuctionBid CreateBid(AuctionBid auctionBid)
         {
             context.AuctionBids.Add(auctionBid);

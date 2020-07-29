@@ -27,15 +27,19 @@
                     <th scope="col">Product Id</th>
                     <th scope="col">Title</th>
                     <th scope="col">Console</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Buy Now Price</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>@a.AuctionId</td>
-                    <td>@a.SellerId</td>
-                    <td>@a.ProductId</td>
-                    <td>@a.ProductName</td>
-                    <td>@a.ProductConsole</td>
+                    <td scope="row" width="300">@a.AuctionId</td>
+                    <td scope="row" width="300">@a.SellerId</td>
+                    <td scope="row" width="300">@a.ProductId</td>
+                    <td scope="row" width="300">@a.ProductName</td>
+                    <td scope="row" width="300">@a.ProductConsole</td>
+                    <td scope="row" width="300">@a.Category</td>
+                    <td scope="row" width="300">@a.BuyNowPrice</td>
                     <td>
                         <form action="/admin/update/@a.AuctionId" class="d-inline">
                             <button class="btn btn-primary">Update</button>

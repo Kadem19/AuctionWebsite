@@ -26,6 +26,12 @@ namespace AuctionProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<double>("BuyNowPrice")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Category")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ImgUrl")
                         .HasColumnType("nvarchar(max)");
 
@@ -49,12 +55,14 @@ namespace AuctionProject.Migrations
                         new
                         {
                             AuctionId = 1,
+                            BuyNowPrice = 0.0,
                             ProductId = 1,
                             SellerId = 1
                         },
                         new
                         {
                             AuctionId = 2,
+                            BuyNowPrice = 0.0,
                             ProductId = 2,
                             SellerId = 2
                         });
@@ -159,6 +167,15 @@ namespace AuctionProject.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "04f1e43b-dbae-4d81-a6d2-17e145d2d2fd",
+                            ConcurrencyStamp = "303fbb7c-dc0b-41e8-8d3d-5841f490d734",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -248,6 +265,24 @@ namespace AuctionProject.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "cd5a92a1-3616-4d5f-9e01-f425f7be23c5",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "3e730b1f-dbef-4fd6-9b00-40c6eef733d4",
+                            Email = "mccammon96@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "MCCAMMON96@GMAIL.COM",
+                            NormalizedUserName = "MCCAMMON96@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKoBK3mioamNRn/oyT+BfeuehEAyL+NR6J37Zo96u6Y7a4kihZbC/iJXpqSMWa4NHQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UserName = "mccammon96@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -311,6 +346,13 @@ namespace AuctionProject.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "cd5a92a1-3616-4d5f-9e01-f425f7be23c5",
+                            RoleId = "04f1e43b-dbae-4d81-a6d2-17e145d2d2fd"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

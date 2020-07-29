@@ -171,3 +171,9 @@ C:\Users\kadem\OneDrive\Documents\MSSA\AuctionProject\AuctionProject\obj\Release
 C:\Users\kadem\OneDrive\Documents\MSSA\AuctionProject\AuctionProject\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\kadem\OneDrive\Documents\MSSA\AuctionProject\AuctionProject\obj\Release\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\kadem\OneDrive\Documents\MSSA\AuctionProject\AuctionProject\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
+C:\Users\kadem\OneDrive\Documents\MSSA\AuctionProject\AuctionProject\obj\Release\netcoreapp3.1\Razor\Views\AuctionBid\ThankYou.cshtml.g.cs
+C:\Users\kadem\OneDrive\Documents\MSSA\AuctionProject\AuctionProject\obj\Release\netcoreapp3.1\Razor\Views\Auction\UnauthorizedUser.cshtml.g.cs
+C:\Users\kadem\OneDrive\Documents\MSSA\AuctionProject\AuctionProject\obj\Release\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Components\NavigationMenu\Default.cshtml.g.cs
+C:\Users\kadem\OneDrive\Documents\MSSA\AuctionProject\AuctionProject\obj\Release\netcoreapp3.1\Razor\Views\Auction\Components\NavigationMenu\Default.cshtml.g.cs
+C:\Users\kadem\OneDrive\Documents\MSSA\AuctionProject\AuctionProject\obj\Release\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs
+C:\Users\kadem\OneDrive\Documents\MSSA\AuctionProject\AuctionProject\obj\Release\netcoreapp3.1\Razor\Views\Shared\Components\NavigationMenu\Default.cshtml.g.cs

@@ -24,10 +24,24 @@ namespace AuctionProject.Controllers
         //   M e t h o d s
 
 
+        //[HttpGet]
+        //public IActionResult CreateBid()
+        //{
+        //    AuctionBid newAuctionBid = new AuctionBid();
+        //    return View(newAuctionBid);
+        //}
+
         [HttpGet]
-        public IActionResult CreateBid()
+        public IActionResult ThankYou()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult CreateBid(int auctionId)
         {
             AuctionBid newAuctionBid = new AuctionBid();
+            newAuctionBid.AuctionId = auctionId;
+            ViewBag.HighestBid = repository.GetHighestBid(auctionId); 
             return View(newAuctionBid);
         }
 
@@ -35,7 +49,7 @@ namespace AuctionProject.Controllers
         public IActionResult CreateBid(AuctionBid auctionBid)
         {
             repository.CreateBid(auctionBid);
-            return RedirectToAction("Index", "Auction");
+            return RedirectToAction("ThankYou", "AuctionBid");
         }
 
         [HttpGet]

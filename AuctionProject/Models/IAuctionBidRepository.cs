@@ -14,6 +14,8 @@ namespace AuctionProject.Models
         //   R e a d
         AuctionBid GetAuctionBid(int auctionbidId);
 
+        AuctionBid GetHighestBid(int auctionId);
+
         //   U p d a t e
 
         AuctionBid UpdateAuctionBid(AuctionBid auctionBid);

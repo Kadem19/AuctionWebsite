@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AuctionProject.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.ComponentModel;
+using AuctionProject.Models.ViewModels;
 
 namespace AuctionProject.Controllers
 {
@@ -16,7 +18,6 @@ namespace AuctionProject.Controllers
         //   F i e l d s  &  P r o p e r t i e s
 
         private IAuctionRepository repository;
-        private int pageSize = 4;
 
         //   C o n s t r u c t o r s
 
@@ -54,14 +55,41 @@ namespace AuctionProject.Controllers
         //return View(allUsers);
 
 
-        public IActionResult Index(int productPage = 1)
+        public IActionResult Index(string category)
         {
-            IQueryable<Auction> someAuctions =
-                repository.GetAllAuctions()
-                          .OrderBy(a => a.AuctionId)
-                          .Skip((productPage - 1) * pageSize)
-                          .Take(pageSize);
-            return View(someAuctions);
+            AuctionListViewModel dto = new AuctionListViewModel();
+
+            if (category == null)
+            {
+                dto.Auctions =
+                    repository.GetAllAuctions()
+                    .OrderBy(a => a.AuctionId);
+                //IQueryable<Auction> someAuctions =
+                //    repository.GetAllAuctions()
+                //              .OrderBy(a => a.AuctionId);
+                //return View(someAuctions);
+            }
+            else
+            {
+                dto.Auctions =
+                    repository.GetAllAuctions()
+                              .Where(a => a.Category == category)
+                              .OrderBy(a => a.AuctionId);
+                //IQueryable<Auction> someAuctions =
+                //   repository.GetAllAuctions()
+                //             .Where(a => a.Category == category)
+                //             .OrderBy(a => a.AuctionId);
+                
+                //return View(someAuctions);
+            }
+
+            dto.CurrentCategory = category;
+            return View(dto);
+        }
+
+        public IActionResult UnauthorizedUser()
+        {
+            return View();
         }
     }
 }

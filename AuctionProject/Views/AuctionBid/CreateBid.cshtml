@@ -1,5 +1,7 @@
 ﻿@model AuctionBid
-
+@{
+    Layout = "_Layout";
+}
 
 <!DOCTYPE html>
 
@@ -11,7 +13,12 @@
 
 <body>
     <form asp-action="CreateBid" method="post">
+        <input type="hidden" asp-for="@Model.AuctionId" />
         <table>
+            <tr>
+                <th> Current Bid: </th>
+                <td> @ViewBag.HighestBid?.BidAmount.ToString("C2") </td>
+            </tr>
             <tr>
                 <th> User Id: </th>
                 <td> <input asp-for="UserId" type="number" /> </td>
@@ -21,15 +28,10 @@
                 <td> <input asp-for="BidAmount" type="number" /> </td>
             </tr>
             <tr>
-                <th> Auction Id: </th>
-                <td> <input asp-for="AuctionId" type="number" /> </td>
-            </tr>
-            <tr>
                 <th></th>
-                <td> <input type="submit" value="Add Auction Bid" /> </td>
+                <td> <input type="submit" class="btn btn-success" value="Place Bid" /></td>
             </tr>
         </table>
     </form>
-
 </body>
 </html>
